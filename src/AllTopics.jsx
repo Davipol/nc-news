@@ -21,10 +21,12 @@ const AllTopics = () => {
 
   return (
     <section className="main-section">
+      <h3 className="main-page-h3">All Topics:</h3>
       <ul className="topics-list">
-        <h3 className="main-page-h3">All Topics:</h3>
         {topics.map((topic) => (
-          <li key={topic.slug}>{topic.slug}</li>
+          <li key={topic.slug} className="topic-list-item">
+            {topic.slug}
+          </li>
         ))}
       </ul>
     </section>

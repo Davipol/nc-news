@@ -17,7 +17,9 @@ const Navbar = () => {
           <li>
             <Link to="/all-topics">All Topics</Link>
           </li>
-          <li>Users</li>
+          <li>
+            <Link to="/all-users">Users</Link>
+          </li>
         </ul>
       </nav>
     </section>

@@ -18,14 +18,17 @@ a:hover {
   display: grid;
   grid-template-areas:
     "header header"
+    "nav search"
     "nav content"
     "footer footer";
   grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto minmax(100px, auto) 1fr auto;
   gap: 5px;
 }
 header {
   background-color: #1d8a99;
   display: flex;
+  border-radius: 20px;
   justify-content: space-evenly;
   grid-area: header;
 }
@@ -58,9 +61,10 @@ span {
   line-height: 40px;
   font-size: 1rem;
 }
-.main-section,
-.form-section {
+.main-section {
   grid-area: content;
+  padding: 0;
+  margin: 0;
 }
 .main-page-h3 {
   text-align: center;
@@ -68,16 +72,30 @@ span {
 }
 .articles-list,
 .topics-list {
-  padding-top: 100px;
-  list-style: unset;
+  padding-top: 0;
+  list-style: none;
 }
-.article-card {
+.topic-list-item,
+.user-card {
+  font-size: 1.2rem;
+  text-align: center;
+  line-height: 2rem;
+}
+.user-image {
+  width: 100px;
+  height: 100px;
+}
+.article-card,
+.user-card {
   border-bottom: solid;
 }
 img {
   height: 200px;
-
   border-radius: 20px;
+}
+.form-section {
+  grid-area: search;
+  max-height: 71px;
 }
 .search-form {
   text-align: center;
@@ -85,8 +103,6 @@ img {
 .footer-section {
   border-top: solid;
   grid-area: footer;
-}
-.footer-section {
   display: flex;
   justify-content: space-evenly;
 }

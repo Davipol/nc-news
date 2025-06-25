@@ -1,7 +1,11 @@
+import { Link } from "react-router-dom";
+
 const ArticleInList = ({ article }) => {
   return (
     <li className="article-card">
-      <h4>{article.title.toUpperCase()}</h4>
+      <Link to={`/articles/${article.article_id}`}>
+        <h4>{article.title.toUpperCase()}</h4>
+      </Link>
       <img
         src={article.article_img_url}
         alt={`image for ${article.title}`}

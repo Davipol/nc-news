@@ -6,6 +6,8 @@ import Footer from "./Footer";
 import PopularArticles from "./PopularArticles";
 import AllArticles from "./AllArticles";
 import AllTopics from "./AllTopics";
+import AllUsers from "./AllUsers";
+import SingleArticle from "./SingleArticle";
 import { Routes, Route } from "react-router-dom";
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/popular-articles" element={<PopularArticles />} />
         <Route path="/all-articles" element={<AllArticles />} />
         <Route path="/all-topics" element={<AllTopics />} />
+        <Route path="/all-users" element={<AllUsers />} />
+        <Route path="/articles/:article_id" element={<SingleArticle />} />
       </Routes>
 
       <Footer />

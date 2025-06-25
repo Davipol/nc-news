@@ -26,12 +26,14 @@ const AllArticles = () => {
       {loading ? (
         <p>Loading Articles for you...</p>
       ) : (
-        <ul className="articles-list">
+        <>
           <h3 className="main-page-h3">Latest Articles:</h3>
-          {articles.map((article) => (
-            <ArticleInList key={article.article_id} article={article} />
-          ))}
-        </ul>
+          <ul className="articles-list">
+            {articles.map((article) => (
+              <ArticleInList key={article.article_id} article={article} />
+            ))}
+          </ul>
+        </>
       )}
     </section>
   );
