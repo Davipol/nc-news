@@ -1,23 +1,28 @@
 import { useEffect, useState } from "react";
 import { getAllTopics } from "./apiFunctions";
+import { Link } from "react-router-dom";
 
 const AllTopics = () => {
   const [loading, setLoading] = useState(true);
   const [topics, setTopics] = useState([]);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     getAllTopics()
       .then((data) => {
-        console.log(data);
         if (data.topics) {
           setTopics(data.topics);
           setLoading(false);
         }
       })
       .catch((err) => {
-        console.log(err, "Failed to fetch topics");
+        setError("Failed to load topics");
         setLoading(false);
       });
   }, []);
+
+  if (error) return <p className="error-message">{error}</p>;
+  if (loading) return <p>Loading All Topics...</p>;
 
   return (
     <section className="main-section">
@@ -25,7 +30,7 @@ const AllTopics = () => {
       <ul className="topics-list">
         {topics.map((topic) => (
           <li key={topic.slug} className="topic-list-item">
-            {topic.slug}
+            <Link to={`/all-topics/topics/${topic.slug}`}>{topic.slug}</Link>
           </li>
         ))}
       </ul>

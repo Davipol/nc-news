@@ -1,5 +1,12 @@
+:root {
+  --main-color: #024946;
+  --light-blue: #8fbfe0;
+  --light-purple: #645f9e;
+  --dark-blue: #1d8a99;
+  --medium-blue: #0bc9cd;
+}
 html {
-  background-color: #024946;
+  background-color: var(--main-color);
   margin: 0 auto;
 }
 h1,
@@ -26,19 +33,24 @@ a:hover {
   gap: 5px;
 }
 header {
-  background-color: #1d8a99;
+  background-color: var(--dark-blue);
   display: flex;
   border-radius: 20px;
   justify-content: space-evenly;
   grid-area: header;
 }
 .main-header {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  border: dotted var(--light-purple);
+  border-radius: 20px;
+  font-family: Courier, monospace;
   padding: 20px;
-  font-size: 2rem;
+  font-size: 2.3rem;
 }
 .main-subheader {
   align-content: center;
+  font-family: "Pacifico", cursive;
+  color: var(--light-purple);
+  font-size: 1.9rem;
 }
 .header-paragraph {
   align-content: center;
@@ -89,6 +101,21 @@ span {
 .user-card {
   border-bottom: solid;
 }
+.comments-list {
+  list-style: none;
+}
+.comment-card {
+  border-top: solid;
+  border-bottom: solid;
+  background-color: var(--medium-blue);
+
+  margin: 2px;
+  font-size: 1rem;
+}
+.comment-card > p {
+  font-size: 0.7rem;
+  color: var(--main-color);
+}
 img {
   height: 200px;
   border-radius: 20px;
@@ -105,4 +132,8 @@ img {
   grid-area: footer;
   display: flex;
   justify-content: space-evenly;
+}
+.error-message {
+  color: red;
+  font-size: 1rem;
 }

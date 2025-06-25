@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { getAllUsers } from "./apiFunctions";
 import UserInlist from "./UserInList";
 
-const AllUsers = () => {
+const AllUsers = (children) => {
+  console.log(children);
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([]);
   useEffect(() => {
@@ -19,7 +20,7 @@ const AllUsers = () => {
         setLoading(false);
       });
   }, []);
-
+  if (loading) return <p>Loading All Users...</p>;
   return (
     <section className="main-section">
       <>

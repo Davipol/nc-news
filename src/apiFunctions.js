@@ -67,3 +67,31 @@ export const getArticleById = (article_id) => {
     return res.json();
   });
 };
+
+export const getCommentsById = (article_id) => {
+  return fetch(`/api/articles/${article_id}/comments`).then((res) => {
+    if (!res.ok) {
+      return Promise.reject({
+        status: res.status,
+        msg: "Failed to fetch comments",
+      });
+    }
+    return res.json();
+  });
+};
+
+export const addVoteToArticle = (article_id, increment) => {
+  return fetch(`http://localhost:9090/api/articles/${article_id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ inc_votes: increment }),
+  }).then((res) => {
+    if (!res.ok) {
+      return Promise.reject({
+        status: res.status,
+        msg: "Failed to add vote",
+      });
+    }
+    return res.json();
+  });
+};
