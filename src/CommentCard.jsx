@@ -1,4 +1,4 @@
-const CommentCard = ({ comment }) => {
+const CommentCard = ({ comment, onDelete }) => {
   return (
     <li className="comment-card">
       <p>
@@ -8,6 +8,9 @@ const CommentCard = ({ comment }) => {
 
       <p>{comment.body}</p>
       <p>Votes: {comment.votes}</p>
+      {onDelete && (
+        <button onClick={() => onDelete(comment.comment_id)}>Delete</button>
+      )}
     </li>
   );
 };

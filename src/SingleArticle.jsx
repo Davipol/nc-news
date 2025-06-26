@@ -7,9 +7,11 @@ import {
 } from "./apiFunctions";
 import CommentCard from "./CommentCard";
 import AddCommentBox from "./AddCommentBox";
+import DeleteCommentBox from "./DeleteCommentBox";
 
 const SingleArticle = () => {
-  const [commentBoxVisible, setCommentBoxVisible] = useState(false);
+  const [addCommentBoxVisible, setAddCommentBoxVisible] = useState(false);
+  const [deleteCommentBoxVisible, setDeleteCommentBoxVisible] = useState(false);
   const [loading, setLoading] = useState(true);
   const [article, setArticle] = useState({});
   const [comments, setComments] = useState([]);
@@ -17,11 +19,21 @@ const SingleArticle = () => {
   const [voteError, setVoteError] = useState(null);
   const { article_id } = useParams();
 
-  const handleCommentBoxClick = () => {
-    if (!commentBoxVisible) {
-      setCommentBoxVisible(true);
+  const handleDeleteCommentBoxClick = () => {
+    if (!deleteCommentBoxVisible) {
+      setDeleteCommentBoxVisible(true);
+      setAddCommentBoxVisible(false);
     } else {
-      setCommentBoxVisible(false);
+      setDeleteCommentBoxVisible(false);
+    }
+  };
+
+  const handleAddCommentBoxClick = () => {
+    if (!addCommentBoxVisible) {
+      setAddCommentBoxVisible(true);
+      setDeleteCommentBoxVisible(false);
+    } else {
+      setAddCommentBoxVisible(false);
     }
   };
 
@@ -38,6 +50,7 @@ const SingleArticle = () => {
         setLoading(false);
       });
   }, [article_id]);
+
   const fetchComments = () => {
     getCommentsById(article_id)
       .then((data) => {
@@ -93,12 +106,20 @@ const SingleArticle = () => {
       <p>
         Comments: {article.comment_count}
         <span>
-          <button type="button" onClick={handleCommentBoxClick}>
-            {commentBoxVisible ? "Hide Comment Box" : "Add A Comment"}
+          <button type="button" onClick={handleAddCommentBoxClick}>
+            {addCommentBoxVisible ? "Hide Comment Box" : "Add A Comment"}
           </button>
+          <span>
+            <button type="button" onClick={handleDeleteCommentBoxClick}>
+              {deleteCommentBoxVisible ? "Hide" : "Delete A Comment"}
+            </button>
+          </span>
         </span>
       </p>
-      {commentBoxVisible && <AddCommentBox onCommentAdded={fetchComments} />}
+      {deleteCommentBoxVisible && (
+        <DeleteCommentBox onCommentDeleted={fetchComments} />
+      )}
+      {addCommentBoxVisible && <AddCommentBox onCommentAdded={fetchComments} />}
       <ul className="comments-list">
         {comments.map((comment) => (
           <CommentCard key={comment.comment_id} comment={comment} />

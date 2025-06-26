@@ -117,3 +117,17 @@ export const addComment = (article_id, username, body) => {
     return res.json();
   });
 };
+
+export const deleteComment = (comment_id) => {
+  return fetch(`http://localhost:9090/api/comments/${comment_id}`, {
+    method: "DELETE",
+  }).then((res) => {
+    if (!res.ok) {
+      return Promise.reject({
+        status: res.status,
+        msg: "failed to delete comment",
+      });
+    }
+    return;
+  });
+};

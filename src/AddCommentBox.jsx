@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { addComment } from "./apiFunctions";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const AddCommentBox = ({ onCommentAdded }) => {
   const { article_id } = useParams();

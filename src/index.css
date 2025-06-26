@@ -110,7 +110,7 @@ span {
 .comment-card {
   border-top: solid;
   border-bottom: solid;
-  background-color: var(--medium-blue);
+  background-color: rgb(252, 244, 211);
 
   margin: 2px;
   font-size: 1rem;
