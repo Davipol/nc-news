@@ -6,14 +6,24 @@ import {
   addVoteToArticle,
 } from "./apiFunctions";
 import CommentCard from "./CommentCard";
+import AddCommentBox from "./AddCommentBox";
 
 const SingleArticle = () => {
+  const [commentBoxVisible, setCommentBoxVisible] = useState(false);
   const [loading, setLoading] = useState(true);
   const [article, setArticle] = useState({});
   const [comments, setComments] = useState([]);
   const [error, setError] = useState(null);
   const [voteError, setVoteError] = useState(null);
   const { article_id } = useParams();
+
+  const handleCommentBoxClick = () => {
+    if (!commentBoxVisible) {
+      setCommentBoxVisible(true);
+    } else {
+      setCommentBoxVisible(false);
+    }
+  };
 
   useEffect(() => {
     getArticleById(article_id)
@@ -28,7 +38,7 @@ const SingleArticle = () => {
         setLoading(false);
       });
   }, [article_id]);
-  useEffect(() => {
+  const fetchComments = () => {
     getCommentsById(article_id)
       .then((data) => {
         if (data.comments) {
@@ -38,6 +48,9 @@ const SingleArticle = () => {
       .catch((err) => {
         console.log(err, "Failed to fetch comments");
       });
+  };
+  useEffect(() => {
+    fetchComments();
   }, [article_id]);
 
   const handleVote = () => {
@@ -66,7 +79,6 @@ const SingleArticle = () => {
         <span></span>
       </p>
       <p>Topic: {article.topic}</p>
-
       <img src={article.article_img_url}></img>
       <p>{article.body}</p>
       <p>
@@ -81,9 +93,12 @@ const SingleArticle = () => {
       <p>
         Comments: {article.comment_count}
         <span>
-          <button type="button">Add A Comment</button>
+          <button type="button" onClick={handleCommentBoxClick}>
+            {commentBoxVisible ? "Hide Comment Box" : "Add A Comment"}
+          </button>
         </span>
       </p>
+      {commentBoxVisible && <AddCommentBox onCommentAdded={fetchComments} />}
       <ul className="comments-list">
         {comments.map((comment) => (
           <CommentCard key={comment.comment_id} comment={comment} />

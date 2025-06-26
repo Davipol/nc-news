@@ -95,3 +95,25 @@ export const addVoteToArticle = (article_id, increment) => {
     return res.json();
   });
 };
+
+export const addComment = (article_id, username, body) => {
+  return fetch(`http://localhost:9090/api/articles/${article_id}/comments`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username: username,
+      body: body,
+    }),
+  }).then((res) => {
+    if (!res.ok) {
+      return Promise.reject({
+        status: res.status,
+        msg: "Failed to add comment",
+      });
+    }
+    return res.json();
+  });
+};

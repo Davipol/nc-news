@@ -27,7 +27,7 @@ const AllArticles = () => {
         <p>Loading Articles for you...</p>
       ) : (
         <>
-          <h3 className="main-page-h3">Latest Articles:</h3>
+          <h3 className="main-page-h3">All Articles:</h3>
           <ul className="articles-list">
             {articles.map((article) => (
               <ArticleInList key={article.article_id} article={article} />
