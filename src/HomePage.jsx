@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getLatestArticles } from "./apiFunctions";
+import { getArticles } from "./apiFunctions";
 import ArticleInList from "./ArticleInList";
 
 const HomePage = () => {
@@ -7,7 +7,7 @@ const HomePage = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    getLatestArticles()
+    getArticles({ sort_by: "created_at", order: "desc" })
       .then((data) => {
         if (data.articles) {
           setArticles(data.articles);

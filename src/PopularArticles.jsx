@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getPopularArticles } from "./apiFunctions";
+import { getArticles } from "./apiFunctions";
 
 import ArticleInList from "./ArticleInList";
 
@@ -7,7 +7,7 @@ const PopularArticles = () => {
   const [loading, setLoading] = useState(true);
   const [articles, setArticles] = useState([]);
   useEffect(() => {
-    getPopularArticles()
+    getArticles({ sort_by: "votes", order: "desc" })
       .then((data) => {
         if (data.articles) {
           setArticles(data.articles);

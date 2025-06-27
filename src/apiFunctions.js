@@ -1,29 +1,12 @@
 import { useParams } from "react-router-dom";
 
-export const getLatestArticles = () => {
-  return fetch("/api/articles?sort_by=created_at").then((res) => {
-    if (!res.ok) {
-      return Promise.reject({
-        status: res.status,
-        msg: "Failed to fetch articles",
-      });
-    }
-    return res.json();
-  });
-};
-export const getPopularArticles = () => {
-  return fetch("/api/articles?sort_by=votes").then((res) => {
-    if (!res.ok) {
-      return Promise.reject({
-        status: res.status,
-        msg: "Failed to fetch articles",
-      });
-    }
-    return res.json();
-  });
-};
-export const getAllArticles = () => {
-  return fetch("/api/articles").then((res) => {
+export const getArticles = ({ sort_by, order, topic } = {}) => {
+  const params = new URLSearchParams();
+  if (sort_by) params.append("sort_by", sort_by);
+  if (order) params.append("order", order);
+  if (topic) params.append("topic", topic);
+
+  return fetch(`/api/articles?${params.toString()}`).then((res) => {
     if (!res.ok) {
       return Promise.reject({
         status: res.status,

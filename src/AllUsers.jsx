@@ -3,7 +3,6 @@ import { getAllUsers } from "./apiFunctions";
 import UserInlist from "./UserInList";
 
 const AllUsers = (children) => {
-  console.log(children);
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([]);
   useEffect(() => {

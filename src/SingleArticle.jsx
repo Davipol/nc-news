@@ -87,15 +87,17 @@ const SingleArticle = () => {
       {error && <p className="error-message">{error}</p>}
       <h3 className="main-page-h3">{article.title}</h3>
       <p>
-        Post by: {article.author} on{" "}
+        <strong>Post by:</strong> {article.author} on{" "}
         {new Date(article.created_at).toLocaleDateString()}
         <span></span>
       </p>
-      <p>Topic: {article.topic}</p>
+      <p>
+        <strong>Topic:</strong> {article.topic}
+      </p>
       <img src={article.article_img_url}></img>
       <p>{article.body}</p>
       <p>
-        Votes: {article.votes}
+        <strong>Votes:</strong> {article.votes}
         <span>
           <button type="button" onClick={handleVote}>
             Vote This Article
@@ -104,7 +106,7 @@ const SingleArticle = () => {
       </p>
       {voteError && <p className="error-message">{voteError}</p>}
       <p>
-        Comments: {article.comment_count}
+        <strong>Comments:</strong> {article.comment_count}
         <span>
           <button type="button" onClick={handleAddCommentBoxClick}>
             {addCommentBoxVisible ? "Hide Comment Box" : "Add A Comment"}

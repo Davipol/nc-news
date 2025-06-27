@@ -11,13 +11,19 @@ const ArticleInList = ({ article }) => {
         alt={`image for ${article.title}`}
       ></img>
       <p>
-        Post by: {article.author} | Date:{" "}
+        <strong>Post by:</strong> {article.author} | Date:{" "}
         {new Date(article.created_at).toLocaleDateString()}
       </p>
 
-      <p>Topic: {article.topic}</p>
-      <p>Votes: {article.votes}</p>
-      <p>Comments: {article.comment_count}</p>
+      <p>
+        <strong>Topic:</strong> {article.topic}
+      </p>
+      <p>
+        <strong>Votes:</strong> {article.votes}
+      </p>
+      <p>
+        <strong>Comments:</strong> {article.comment_count}
+      </p>
     </li>
   );
 };

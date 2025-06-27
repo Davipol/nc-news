@@ -10,6 +10,7 @@ import AllUsers from "./AllUsers";
 import SingleArticle from "./SingleArticle";
 import ArticlesbyTopic from "./ArticlesByTopic";
 import { Routes, Route } from "react-router-dom";
+
 function App() {
   return (
     <section className="container">
@@ -19,14 +20,13 @@ function App() {
       <SearchForm />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/popular-articles" element={<PopularArticles />} />
         <Route path="/all-articles" element={<AllArticles />} />
+        <Route path="/popular-articles" element={<PopularArticles />} />
         <Route path="/all-topics" element={<AllTopics />} />
         <Route path="/all-topics/topics/:topic" element={<ArticlesbyTopic />} />
         <Route path="/all-users" element={<AllUsers />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
       </Routes>
-
       <Footer />
     </section>
   );

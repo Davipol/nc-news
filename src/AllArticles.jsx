@@ -1,28 +1,39 @@
 import { useEffect, useState } from "react";
-import { getAllArticles } from "./apiFunctions";
+import { useSearchParams } from "react-router-dom";
+import { getArticles } from "./apiFunctions";
 import ArticleInList from "./ArticleInList";
+import SortBy from "./SortBy";
 
 const AllArticles = () => {
   const [loading, setLoading] = useState(true);
   const [articles, setArticles] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const sort_by = searchParams.get("sort_by") || "created_at";
+  const order = searchParams.get("order") || "desc";
 
   useEffect(() => {
-    getAllArticles()
-      .then((data) => {
-        if (data.articles) {
-          setArticles(data.articles);
-          setLoading(false);
+    if (!searchParams.get("sort_by") || !searchParams.get("order")) {
+      setSearchParams({ sort_by, order });
+    }
+  }, []);
 
-          console.log(data.articles);
-        }
+  useEffect(() => {
+    setLoading(true);
+    getArticles({ sort_by, order })
+      .then((data) => {
+        setArticles(data.articles);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err, "Failed to fetch articles");
         setLoading(false);
       });
-  }, []);
+  }, [sort_by, order]);
+
   return (
     <section className="main-section">
+      <SortBy />
       {loading ? (
         <p>Loading Articles for you...</p>
       ) : (
@@ -38,4 +49,5 @@ const AllArticles = () => {
     </section>
   );
 };
+
 export default AllArticles;
