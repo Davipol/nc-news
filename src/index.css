@@ -22,6 +22,7 @@ a:hover {
   color: gray;
 }
 .container {
+  min-height: 100vh;
   display: grid;
   grid-template-areas:
     "header header"
@@ -73,7 +74,7 @@ span {
 }
 .nav-list li {
   padding-bottom: 20px;
-  line-height: 40px;
+  line-height: 38px;
   font-size: 1rem;
 }
 .main-section {
@@ -188,6 +189,7 @@ img {
 }
 .error-not-found {
   text-align: center;
+  grid-area: content;
 }
 .error-not-found p {
   color: red;
