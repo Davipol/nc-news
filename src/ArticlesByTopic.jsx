@@ -9,6 +9,7 @@ const ArticlesByTopic = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchParams] = useSearchParams();
+  const [noArticleMsg, setNoArticleMsg] = useState("");
 
   const sort_by = searchParams.get("sort_by") || "created_at";
   const order = searchParams.get("order") || "desc";
@@ -21,10 +22,14 @@ const ArticlesByTopic = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.error(err);
+        setNoArticleMsg(`No articles to show for "${topic}"`);
         setLoading(false);
       });
   }, [topic, sort_by, order]);
+
+  if (noArticleMsg) {
+    return <p className="error-message">{noArticleMsg}</p>;
+  }
 
   return (
     <section className="main-section">

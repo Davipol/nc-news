@@ -29,7 +29,7 @@ a:hover {
     "nav content"
     "footer footer";
   grid-template-columns: 1fr 4fr;
-  grid-template-rows: auto minmax(100px, auto) 1fr auto;
+  grid-template-rows: auto 80px 1fr auto;
   gap: 5px;
 }
 header {
@@ -64,7 +64,7 @@ span {
 .nav-section {
   grid-area: nav;
   border-right: solid;
-  height: 75vh;
+  height: auto;
   position: sticky;
   top: 0;
 }
@@ -126,7 +126,7 @@ img {
 }
 .form-section {
   grid-area: search;
-  max-height: 71px;
+  max-height: none;
 }
 .search-form {
   text-align: center;
@@ -140,6 +140,7 @@ img {
 .error-message {
   color: red;
   font-size: 1rem;
+  text-align: center;
 }
 .success-message {
   color: rgb(133, 228, 133);
@@ -184,4 +185,71 @@ img {
   display: flex;
   justify-content: center;
   gap: 5px;
+}
+.error-not-found {
+  text-align: center;
+}
+.error-not-found p {
+  color: red;
+}
+
+@media only screen and (max-width: 600px) {
+  header .main-subheader {
+    text-align: center;
+    font-family: "Baumans", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: rgb(99, 46, 168);
+    font-size: 1.5rem;
+  }
+  .nav-wrapper {
+    grid-area: nav;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-toggle {
+    display: block;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: antiquewhite;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  .nav-list li {
+    padding-bottom: 20px;
+    line-height: 20px;
+    font-size: 0.7rem;
+    margin-left: -20px;
+  }
+  .nav-section.hide {
+    display: none;
+  }
+  .nav-section.show {
+    display: block;
+    background-color: var(--main-color);
+    padding: 10px;
+  }
+
+  .main-header {
+    font-size: 1.5rem;
+  }
+  img {
+    width: 100px;
+    height: 100px;
+  }
+  .header-paragraph {
+    align-content: center;
+    font-size: 0.7rem;
+  }
+}
+@media (min-width: 601px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-section {
+    display: block !important;
+  }
 }

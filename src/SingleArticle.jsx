@@ -46,7 +46,7 @@ const SingleArticle = () => {
         }
       })
       .catch((err) => {
-        setError("Failed to load article");
+        setError("This article does not exist.");
         setLoading(false);
       });
   }, [article_id]);
@@ -59,7 +59,7 @@ const SingleArticle = () => {
         }
       })
       .catch((err) => {
-        console.log(err, "Failed to fetch comments");
+        console.log(err, "Failed to fetch comments.");
       });
   };
   useEffect(() => {
@@ -78,13 +78,17 @@ const SingleArticle = () => {
         votes: curr.votes - 1,
       }));
       setVoteError("Your vote was not added, please try again.");
-      console.error("Vote was not added:", err);
     });
   };
   if (loading) return <p>Loading article...</p>;
+  if (error)
+    return (
+      <>
+        <p className="error-message">{error}</p>
+      </>
+    );
   return (
     <section className="main-section single-article">
-      {error && <p className="error-message">{error}</p>}
       <h3 className="main-page-h3">{article.title}</h3>
       <p>
         <strong>Post by:</strong> {article.author} on{" "}

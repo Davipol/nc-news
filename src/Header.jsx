@@ -1,4 +1,4 @@
-const Header = () => {
+const Header = ({ toggleNav }) => {
   return (
     <header>
       <h1 className="main-header">NC-NEWS</h1>

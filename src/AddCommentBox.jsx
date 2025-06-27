@@ -15,7 +15,7 @@ const AddCommentBox = ({ onCommentAdded }) => {
     setSuccessMsg("");
 
     if (!body || !username) {
-      setError("Please insert a username and a comment.");
+      setError("Please insert both username and comment before submitting.");
       return;
     }
     addComment(article_id, username, body)
