@@ -5,6 +5,7 @@ import UserInlist from "./UserInList";
 const AllUsers = (children) => {
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([]);
+  const [error, setError] = useState(null);
   useEffect(() => {
     getAllUsers()
       .then((data) => {
@@ -14,12 +15,13 @@ const AllUsers = (children) => {
           setLoading(false);
         }
       })
-      .catch((err) => {
-        console.log(err, "Failed to fetch users");
+      .catch((error) => {
+        setError("Failed to load users.");
         setLoading(false);
       });
   }, []);
-  if (loading) return <p>Loading All Users...</p>;
+  if (loading) return <p className="loading-message">Loading All Users...</p>;
+  if (error) return <p className="error-message">{error}</p>;
   return (
     <section className="main-section">
       <>

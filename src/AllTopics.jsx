@@ -16,13 +16,13 @@ const AllTopics = () => {
         }
       })
       .catch((err) => {
-        setError("Failed to load topics");
+        setError("Failed to load topics.");
         setLoading(false);
       });
   }, []);
 
   if (error) return <p className="error-message">{error}</p>;
-  if (loading) return <p>Loading All Topics...</p>;
+  if (loading) return <p className="loading-message">Loading All Topics...</p>;
 
   return (
     <section className="main-section">

@@ -5,6 +5,7 @@ import ArticleInList from "./ArticleInList";
 const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [articles, setArticles] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     getArticles({ sort_by: "created_at", order: "desc" })
@@ -17,11 +18,12 @@ const HomePage = () => {
         }
       })
       .catch((err) => {
-        console.log(err, "Failed to fetch latest articles");
+        setError("Failed to load articles.");
         setLoading(false);
       });
   }, []);
 
+  if (error) return <p className="error-message">{error}</p>;
   return (
     <section className="main-section">
       {loading ? (

@@ -46,7 +46,7 @@ header {
   border-radius: 50px;
   font-family: Courier, monospace;
   padding: 20px;
-  font-size: 2.3rem;
+  font-size: 2.5rem;
 }
 .main-subheader {
   align-content: center;
@@ -54,7 +54,7 @@ header {
   font-weight: 700;
   font-style: normal;
   color: rgb(99, 46, 168);
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   margin: 10px;
 }
 .header-paragraph {
@@ -76,7 +76,7 @@ span {
 .nav-list li {
   padding-bottom: 20px;
   line-height: 38px;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .main-section {
   grid-area: content;
@@ -143,6 +143,7 @@ img {
   color: red;
   font-size: 1rem;
   text-align: center;
+  grid-area: content;
 }
 .success-message {
   color: rgb(133, 228, 133);
@@ -194,6 +195,9 @@ img {
 }
 .error-not-found p {
   color: red;
+}
+.loading-message {
+  grid-area: content;
 }
 
 @media only screen and (max-width: 600px) {

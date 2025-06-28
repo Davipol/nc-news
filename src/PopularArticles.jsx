@@ -6,6 +6,7 @@ import ArticleInList from "./ArticleInList";
 const PopularArticles = () => {
   const [loading, setLoading] = useState(true);
   const [articles, setArticles] = useState([]);
+  const [error, setError] = useState(null);
   useEffect(() => {
     getArticles({ sort_by: "votes", order: "desc" })
       .then((data) => {
@@ -15,10 +16,12 @@ const PopularArticles = () => {
         }
       })
       .catch((err) => {
-        console.log(err, "Failed to fetch popular articles");
+        setError("Failed to load articles.");
         setLoading(false);
       });
   }, []);
+
+  if (error) return <p className="error-message">{error}</p>;
   return (
     <section className="main-section">
       {loading ? (

@@ -8,6 +8,7 @@ const AllArticles = () => {
   const [loading, setLoading] = useState(true);
   const [articles, setArticles] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [error, setError] = useState(null);
 
   const sort_by = searchParams.get("sort_by") || "created_at";
   const order = searchParams.get("order") || "desc";
@@ -26,11 +27,12 @@ const AllArticles = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err, "Failed to fetch articles");
+        setError("Failed to load articles.");
         setLoading(false);
       });
   }, [sort_by, order]);
 
+  if (error) return <p className="error-message">{error}</p>;
   return (
     <section className="main-section">
       <SortBy />
