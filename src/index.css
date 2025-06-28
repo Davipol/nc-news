@@ -41,7 +41,7 @@ header {
   grid-area: header;
 }
 .main-header {
-  color: rgb(105, 79, 167);
+  color: rgb(83, 61, 136);
   border: dotted var(--light-purple) 0.5rem;
   border-radius: 50px;
   font-family: Courier, monospace;
@@ -118,7 +118,7 @@ span {
   font-size: 1rem;
 }
 .comment-card > p {
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   color: var(--main-color);
   margin: 3px;
 }
