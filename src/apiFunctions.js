@@ -64,7 +64,7 @@ export const getCommentsById = (article_id) => {
 };
 
 export const addVoteToArticle = (article_id, increment) => {
-  return fetch(`${API_URL}/articles/${article_id}`, {
+  return fetch(`${API_URL}/api/articles/${article_id}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ inc_votes: increment }),
@@ -80,7 +80,7 @@ export const addVoteToArticle = (article_id, increment) => {
 };
 
 export const addComment = (article_id, username, body) => {
-  return fetch(`${API_URL}/articles/${article_id}/comments`, {
+  return fetch(`${API_URL}/api/articles/${article_id}/comments`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -102,7 +102,7 @@ export const addComment = (article_id, username, body) => {
 };
 
 export const deleteComment = (comment_id) => {
-  return fetch(`${API_URL}/comments/${comment_id}`, {
+  return fetch(`${API_URL}/api/comments/${comment_id}`, {
     method: "DELETE",
   }).then((res) => {
     if (!res.ok) {
