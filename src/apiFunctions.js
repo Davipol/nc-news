@@ -1,5 +1,3 @@
-import { useParams } from "react-router-dom";
-
 export const getArticles = ({ sort_by, order, topic } = {}) => {
   const params = new URLSearchParams();
   if (sort_by) params.append("sort_by", sort_by);

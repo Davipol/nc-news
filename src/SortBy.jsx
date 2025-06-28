@@ -9,8 +9,8 @@ const SortBy = () => {
         ? ["order", e.target.value]
         : ["sort_by", e.target.value];
 
-    setSearchParams((prev) => {
-      const updated = new URLSearchParams(prev);
+    setSearchParams((currentParam) => {
+      const updated = new URLSearchParams(currentParam);
       updated.set(key, value);
       return updated;
     });

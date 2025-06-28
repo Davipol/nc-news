@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { getArticles } from "./apiFunctions";
-import ArticleInList from "./ArticleInList";
 import { useNavigate } from "react-router-dom";
 
 const SearchForm = () => {
