@@ -65,7 +65,7 @@ span {
 }
 .nav-section {
   grid-area: nav;
-  border-right: solid rgb(99, 46, 168);
+  border-right: solid;
   height: auto;
   position: sticky;
   top: 0;
