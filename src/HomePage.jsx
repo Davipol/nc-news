@@ -13,8 +13,6 @@ const HomePage = () => {
         if (data.articles) {
           setArticles(data.articles);
           setLoading(false);
-
-          console.log(data.articles);
         }
       })
       .catch((err) => {

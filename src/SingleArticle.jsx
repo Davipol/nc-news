@@ -80,7 +80,7 @@ const SingleArticle = () => {
       setVoteError("Your vote was not added, please try again.");
     });
   };
-  if (loading) return <p>Loading article...</p>;
+  if (loading) return <p className="loading-message">Loading article...</p>;
   if (error)
     return (
       <>
@@ -98,7 +98,10 @@ const SingleArticle = () => {
       <p>
         <strong>Topic:</strong> {article.topic}
       </p>
-      <img src={article.article_img_url}></img>
+      <img
+        src={article.article_img_url}
+        alt={`image for article ${article.title}`}
+      ></img>
       <p>{article.body}</p>
       <p>
         <strong>Votes:</strong> {article.votes}

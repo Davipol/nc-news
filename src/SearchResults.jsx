@@ -7,6 +7,7 @@ const SearchResults = () => {
   const [searchParams] = useSearchParams();
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const query = searchParams.get("query") || "";
 
   useEffect(() => {
@@ -17,9 +18,12 @@ const SearchResults = () => {
         );
         setArticles(filtered);
         setLoading(false);
+        if (filtered.length === 0) {
+          setError("No matching articles found.");
+        }
       })
-      .catch((err) => {
-        console.log("Error fetching articles:", err);
+      .catch(() => {
+        setError("Failed to fetch articles.");
         setLoading(false);
       });
   }, [query]);
@@ -30,7 +34,7 @@ const SearchResults = () => {
       {loading ? (
         <p>Loading...</p>
       ) : articles.length === 0 ? (
-        <p>No matching articles found.</p>
+        <p className="error-message">{error}</p>
       ) : (
         <ul className="articles-list">
           {articles.map((article) => (

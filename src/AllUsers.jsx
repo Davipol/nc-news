@@ -9,7 +9,6 @@ const AllUsers = (children) => {
   useEffect(() => {
     getAllUsers()
       .then((data) => {
-        console.log(data);
         if (data.users) {
           setUsers(data.users);
           setLoading(false);

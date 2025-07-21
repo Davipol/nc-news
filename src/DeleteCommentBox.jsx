@@ -9,10 +9,16 @@ const DeleteCommentBox = ({ onCommentDeleted }) => {
   const [username, setUsername] = useState("");
   const [userComments, setUserComments] = useState([]);
   const [successMsg, setSuccessMsg] = useState("");
+  const [loading, setLoading] = useState(false);
 
+  const handleUserActivity = () => {
+    if (successMsg) setSuccessMsg("");
+    if (error) setError("");
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
-    setError("");
+    handleUserActivity();
+
     getCommentsById(article_id)
       .then((data) => {
         const filtered = data.comments.filter(
@@ -28,6 +34,8 @@ const DeleteCommentBox = ({ onCommentDeleted }) => {
   };
 
   const handleDelete = (comment_id) => {
+    setLoading(true);
+
     deleteComment(comment_id)
       .then(() => {
         setUserComments((curr) =>
@@ -35,11 +43,15 @@ const DeleteCommentBox = ({ onCommentDeleted }) => {
         );
         setSuccessMsg("Comment deleted successfully.");
         setUsername("");
+        setLoading(false);
         if (onCommentDeleted) {
           onCommentDeleted();
         }
       })
-      .catch(() => setError("Failed to delete comment."));
+      .catch(() => {
+        setError("Failed to delete comment.");
+        setLoading(false);
+      });
   };
 
   return (
@@ -49,11 +61,20 @@ const DeleteCommentBox = ({ onCommentDeleted }) => {
           type="text"
           placeholder="Insert username"
           value={username}
-          onChange={(event) => setUsername(event.target.value)}
+          onChange={(event) => {
+            setUsername(event.target.value);
+            handleUserActivity();
+            setError("");
+          }}
         />
-        <button type="submit">Submit</button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Submitting..." : "Submit"}
+        </button>
       </form>
       {error && <p className="error-message">{error}</p>}
+      {loading && (
+        <p className="loading-paragraph">Deleting comment, please wait...</p>
+      )}
       {successMsg && <p className="success-message">{successMsg}</p>}
       {userComments.length > 0 && (
         <ul className="comments-list">

@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:9090";
+const API_URL = import.meta.env.VITE_API_URL || "/api";
 
 export const getArticles = ({ sort_by, order, topic } = {}) => {
   const params = new URLSearchParams();
@@ -6,7 +6,7 @@ export const getArticles = ({ sort_by, order, topic } = {}) => {
   if (order) params.append("order", order);
   if (topic) params.append("topic", topic);
 
-  return fetch(`${API_URL}/api/articles?${params.toString()}`).then((res) => {
+  return fetch(`${API_URL}/articles?${params.toString()}`).then((res) => {
     if (!res.ok) {
       return Promise.reject({
         status: res.status,
@@ -18,7 +18,7 @@ export const getArticles = ({ sort_by, order, topic } = {}) => {
 };
 
 export const getAllTopics = () => {
-  return fetch(`${API_URL}/api/topics`).then((res) => {
+  return fetch(`${API_URL}/topics`).then((res) => {
     if (!res.ok) {
       return Promise.reject({
         status: res.status,
@@ -29,7 +29,7 @@ export const getAllTopics = () => {
   });
 };
 export const getAllUsers = () => {
-  return fetch(`${API_URL}/api/users`).then((res) => {
+  return fetch(`${API_URL}/users`).then((res) => {
     if (!res.ok) {
       return Promise.reject({
         status: res.status,
@@ -40,7 +40,7 @@ export const getAllUsers = () => {
   });
 };
 export const getArticleById = (article_id) => {
-  return fetch(`${API_URL}/api/articles/${article_id}`).then((res) => {
+  return fetch(`${API_URL}/articles/${article_id}`).then((res) => {
     if (!res.ok) {
       return Promise.reject({
         status: res.status,
@@ -52,7 +52,7 @@ export const getArticleById = (article_id) => {
 };
 
 export const getCommentsById = (article_id) => {
-  return fetch(`${API_URL}/api/articles/${article_id}/comments`).then((res) => {
+  return fetch(`${API_URL}/articles/${article_id}/comments`).then((res) => {
     if (!res.ok) {
       return Promise.reject({
         status: res.status,
@@ -64,7 +64,7 @@ export const getCommentsById = (article_id) => {
 };
 
 export const addVoteToArticle = (article_id, increment) => {
-  return fetch(`${API_URL}/api/articles/${article_id}`, {
+  return fetch(`${API_URL}/articles/${article_id}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ inc_votes: increment }),
@@ -80,7 +80,7 @@ export const addVoteToArticle = (article_id, increment) => {
 };
 
 export const addComment = (article_id, username, body) => {
-  return fetch(`${API_URL}/api/articles/${article_id}/comments`, {
+  return fetch(`${API_URL}/articles/${article_id}/comments`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -102,7 +102,7 @@ export const addComment = (article_id, username, body) => {
 };
 
 export const deleteComment = (comment_id) => {
-  return fetch(`${API_URL}/api/comments/${comment_id}`, {
+  return fetch(`${API_URL}/comments/${comment_id}`, {
     method: "DELETE",
   }).then((res) => {
     if (!res.ok) {

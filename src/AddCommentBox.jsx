@@ -5,6 +5,7 @@ import { useState } from "react";
 const AddCommentBox = ({ onCommentAdded }) => {
   const { article_id } = useParams();
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const [body, setBody] = useState("");
   const [username, setUsername] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
@@ -13,23 +14,27 @@ const AddCommentBox = ({ onCommentAdded }) => {
     event.preventDefault();
     setError("");
     setSuccessMsg("");
+    setLoading(true);
 
     if (!body || !username) {
       setError("Please insert both username and comment before submitting.");
+      setLoading(false);
       return;
     }
+
     addComment(article_id, username, body)
       .then((data) => {
         setSuccessMsg("Comment added successfully.");
         setBody("");
         setUsername("");
+        setLoading(false);
         if (onCommentAdded) {
           onCommentAdded();
         }
       })
       .catch((err) => {
         setError("Failed to add comment. Please try again.");
-        console.log(err);
+        setLoading(false);
       });
   };
   return (
@@ -54,6 +59,7 @@ const AddCommentBox = ({ onCommentAdded }) => {
           </button>
         </div>
       </form>
+      {loading && <p>Adding your comment, please wait...</p>}
       {error && <p className="error-message">{error}</p>}
       {successMsg && <p className="success-message">{successMsg}</p>}
     </section>
