@@ -18,7 +18,7 @@ const SortBy = () => {
 
   return (
     <section className="sort-by">
-      <label>
+      <label className="select-label">
         Sort By:{" "}
         <select
           name="sort_by"
@@ -31,15 +31,15 @@ const SortBy = () => {
         </select>
       </label>
 
-      <label>
+      <label className="select-label">
         Order:{" "}
         <select
           name="order"
           value={searchParams.get("order") || "desc"}
           onChange={handleChange}
         >
-          <option value="desc">Descending</option>
-          <option value="asc">Ascending</option>
+          <option value="desc">Latest</option>
+          <option value="asc">Oldest</option>
         </select>
       </label>
     </section>

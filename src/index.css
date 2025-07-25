@@ -7,7 +7,9 @@
 }
 html {
   background-color: var(--main-color);
-  margin: 0 auto;
+  margin: 10px auto;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 h1,
 h2,
@@ -35,6 +37,7 @@ a:hover {
 }
 header {
   background-color: var(--dark-blue);
+  margin-bottom: 3%;
   display: flex;
   border-radius: 20px;
   justify-content: space-evenly;
@@ -46,6 +49,7 @@ header {
   border-radius: 50px;
   font-family: Courier, monospace;
   padding: 20px;
+
   font-size: 2.5rem;
 }
 .main-subheader {
@@ -129,10 +133,30 @@ img {
 .form-section {
   grid-area: search;
   max-height: none;
+  display: flex;
+  justify-content: center;
 }
 .search-form {
   text-align: center;
 }
+.sort-by {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.select-label select {
+  display: block;
+}
+.select-label {
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 45px;
+}
+.select {
+  margin-top: 28px;
+}
+
 .footer-section {
   border-top: solid;
   grid-area: footer;
@@ -184,11 +208,7 @@ img {
   font-size: 1rem;
   cursor: pointer;
 }
-.sort-by {
-  display: flex;
-  justify-content: center;
-  gap: 5px;
-}
+
 .error-not-found {
   text-align: center;
   grid-area: content;
@@ -203,14 +223,19 @@ img {
   color: yellow;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 755px) {
   header .main-subheader {
     text-align: center;
     font-family: "Baumans", sans-serif;
     font-weight: 700;
     font-style: normal;
     color: rgb(99, 46, 168);
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+  }
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .nav-wrapper {
     grid-area: nav;
@@ -222,15 +247,16 @@ img {
     display: block;
     font-size: 1.2rem;
     background: none;
-    border: solid;
+    border: solid 1px;
     color: antiquewhite;
     cursor: pointer;
     margin-bottom: 10px;
+    margin-top: 10px;
   }
   .nav-list li {
     padding-bottom: 8px;
-    line-height: 20px;
-    font-size: 0.7rem;
+    line-height: 25px;
+    font-size: 0.8rem;
     margin-left: -20px;
     border-bottom: solid 1.5px rgb(47, 33, 82);
   }
@@ -247,8 +273,8 @@ img {
     font-size: 1.5rem;
   }
   img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 110px;
   }
   .user-image {
     width: 60px;
@@ -259,7 +285,7 @@ img {
     font-size: 0.7rem;
   }
 }
-@media (min-width: 601px) {
+@media (min-width: 756px) {
   .nav-toggle {
     display: none;
   }
