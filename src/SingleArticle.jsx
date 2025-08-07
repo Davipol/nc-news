@@ -114,16 +114,15 @@ const SingleArticle = () => {
       {voteError && <p className="error-message">{voteError}</p>}
       <p>
         <strong>Comments:</strong> {article.comment_count}
-        <span>
+        <div className="comment-buttons-add-del">
           <button type="button" onClick={handleAddCommentBoxClick}>
-            {addCommentBoxVisible ? "Hide Comment Box" : "Add A Comment"}
+            {addCommentBoxVisible ? "Hide" : "Add Comment"}
           </button>
-          <span>
-            <button type="button" onClick={handleDeleteCommentBoxClick}>
-              {deleteCommentBoxVisible ? "Hide" : "Delete A Comment"}
-            </button>
-          </span>
-        </span>
+
+          <button type="button" onClick={handleDeleteCommentBoxClick}>
+            {deleteCommentBoxVisible ? "Hide" : "Delete Comment"}
+          </button>
+        </div>
       </p>
       {deleteCommentBoxVisible && (
         <DeleteCommentBox onCommentDeleted={fetchComments} />
