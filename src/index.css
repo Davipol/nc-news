@@ -6,10 +6,11 @@
   --medium-blue: #0bc9cd;
 }
 html {
-  background-color: var(--main-color);
-  margin: 10px auto;
-  margin-right: 10px;
-  margin-left: 10px;
+  background-color: rgb(247, 247, 247);
+  margin: -8px;
+  margin-right: -8px;
+  margin-left: -8px;
+  margin-bottom: -8px;
 }
 h1,
 h2,
@@ -18,7 +19,7 @@ p,
 li,
 label,
 a {
-  color: antiquewhite;
+  color: black;
 }
 a:hover {
   color: gray;
@@ -36,16 +37,17 @@ a:hover {
   gap: 5px;
 }
 header {
-  background-color: var(--dark-blue);
+  background-color: rgb(222, 215, 241);
   margin-bottom: 3%;
+  border-bottom: solid 3px;
   display: flex;
-  border-radius: 20px;
+  border-radius: 0 0 10px 10px;
   justify-content: space-evenly;
   grid-area: header;
 }
 .main-header {
-  color: rgb(83, 61, 136);
-  border: dotted var(--light-purple) 0.5rem;
+  color: rgb(99, 46, 136);
+  border: dotted rgb(99, 46, 168) 0.5rem;
   border-radius: 50px;
   font-family: Courier, monospace;
   padding: 20px;
@@ -64,12 +66,17 @@ header {
 .header-paragraph {
   align-content: center;
 }
+button {
+  background-color: rgb(170, 177, 177);
+  border: solid 0.5px rgb(170, 177, 177);
+  border-radius: 5px;
+}
 span {
   padding: 10px;
 }
 .nav-section {
   grid-area: nav;
-  border-right: solid;
+  border-right: solid 1px;
   height: auto;
   position: sticky;
   top: 0;
@@ -117,16 +124,16 @@ span {
 }
 .comment-card {
   border-top: solid;
-  border-bottom: solid;
-  border-radius: 12px;
-  background-color: rgb(252, 244, 211);
+  border-bottom: solid 1px;
+  border-radius: 4px;
+  background-color: rgb(248, 248, 248);
 
   margin: 2px;
   font-size: 1rem;
 }
 .comment-card > p {
   font-size: 0.85rem;
-  color: var(--main-color);
+
   margin: 3px;
 }
 .comment-buttons-add-del {
@@ -145,10 +152,13 @@ img {
   display: flex;
   justify-content: center;
   margin-right: 30px;
-  margin-left: 10px;
+  margin-left: 30px;
 }
 .search-button {
   margin-top: 4px;
+}
+.search-title {
+  font-size: 1rem;
 }
 .search-form {
   text-align: center;
@@ -158,6 +168,9 @@ img {
   display: flex;
   justify-content: center;
   gap: 10px;
+  margin-top: 10px;
+  font-size: 1rem;
+  margin-left: 30px;
 }
 .select-label select {
   display: block;
@@ -172,20 +185,22 @@ img {
 }
 
 .footer-section {
-  border-top: solid;
+  border-top: solid 1px;
+  background-color: rgb(222, 215, 241);
   grid-area: footer;
   display: flex;
   justify-content: space-evenly;
 }
 .error-message {
   color: red;
-  font-size: 1rem;
+  font-size: 0.8rem;
   text-align: center;
   grid-area: content;
+  margin-top: 30px;
 }
 .success-message {
-  color: rgb(133, 228, 133);
-  font-size: 1 rem;
+  color: rgb(86, 148, 86);
+  font-size: 0.8 rem;
 }
 .comment-box form {
   display: flex;
@@ -228,9 +243,13 @@ img {
 }
 .loading-message {
   grid-area: content;
+  font-size: 0.8rem;
+  margin-top: 30px;
+  text-align: center;
 }
 .loading-paragraph {
-  color: yellow;
+  color: rgb(12, 12, 5);
+  font-size: 0.8rem;
 }
 
 @media only screen and (max-width: 755px) {
@@ -257,8 +276,8 @@ img {
     display: block;
     font-size: 1.2rem;
     background: none;
-    border: solid 1px;
-    color: antiquewhite;
+    border: none;
+    color: rgb(7, 5, 3);
     cursor: pointer;
     margin-bottom: 10px;
     margin-top: 10px;
@@ -268,14 +287,13 @@ img {
     line-height: 25px;
     font-size: 0.8rem;
     margin-left: -20px;
-    border-bottom: solid 1.5px rgb(47, 33, 82);
   }
   .nav-section.hide {
     display: none;
   }
   .nav-section.show {
     display: block;
-    background-color: var(--main-color);
+    background-color: rgb(247, 247, 247);
     padding: 10px;
   }
 

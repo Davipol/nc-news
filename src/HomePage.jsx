@@ -25,7 +25,7 @@ const HomePage = () => {
   return (
     <section className="main-section">
       {loading ? (
-        <p>Loading Articles for you...</p>
+        <p className="loading-message">Loading Articles for you...</p>
       ) : (
         <ul className="articles-list">
           <h3 className="main-page-h3">Latest Articles:</h3>
