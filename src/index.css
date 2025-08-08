@@ -195,17 +195,7 @@ img {
   display: flex;
   justify-content: space-evenly;
 }
-.error-message {
-  color: red;
-  font-size: 0.8rem;
-  text-align: center;
-  grid-area: content;
-  margin-top: 30px;
-}
-.success-message {
-  color: rgb(86, 148, 86);
-  font-size: 0.8 rem;
-}
+
 .comment-box form {
   display: flex;
   flex-direction: column;
@@ -237,13 +227,27 @@ img {
   flex: 1;
   cursor: pointer;
 }
-
+.error-message {
+  display: block;
+  color: red;
+  font-size: 0.8rem;
+  text-align: center;
+  grid-area: content;
+  margin-top: 30px;
+  margin-right: 80px;
+}
+.success-message {
+  color: rgb(86, 148, 86);
+  font-size: 0.8 rem;
+}
 .error-not-found {
   text-align: center;
   grid-area: content;
+  margin-right: 80px;
 }
 .error-not-found p {
   color: red;
+  text-align: center;
 }
 .loading-message {
   grid-area: content;
@@ -255,7 +259,12 @@ img {
   color: rgb(12, 12, 5);
   font-size: 0.8rem;
 }
-
+.article-in-list-title-link {
+  text-decoration: none;
+}
+.article-in-list-title-link:hover {
+  text-decoration: underline;
+}
 @media only screen and (max-width: 755px) {
   header .main-subheader {
     text-align: center;
@@ -332,9 +341,7 @@ img {
   .article-in-list-title {
     font-size: 0.8rem;
   }
-  .article-in-list-title-link {
-    text-decoration: none;
-  }
+
   .article-in-list-paragraph {
     font-size: 0.8rem;
     line-height: 0.6rem;

@@ -22,18 +22,25 @@ const AllTopics = () => {
   }, []);
 
   if (error) return <p className="error-message">{error}</p>;
-  if (loading) return <p className="loading-message">Loading All Topics...</p>;
 
   return (
     <section className="main-section">
-      <h3 className="main-page-h3">All Topics:</h3>
-      <ul className="topics-list">
-        {topics.map((topic) => (
-          <li key={topic.slug} className="topic-list-item">
-            <Link to={`/all-topics/topics/${topic.slug}`}>{topic.slug}</Link>
-          </li>
-        ))}
-      </ul>
+      {loading ? (
+        <p className="loading-message">Loading All Topics...</p>
+      ) : (
+        <>
+          <h3 className="main-page-h3">All Topics:</h3>
+          <ul className="topics-list">
+            {topics.map((topic) => (
+              <li key={topic.slug} className="topic-list-item">
+                <Link to={`/all-topics/topics/${topic.slug}`}>
+                  {topic.slug}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
     </section>
   );
 };

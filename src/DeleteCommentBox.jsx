@@ -25,7 +25,7 @@ const DeleteCommentBox = ({ onCommentDeleted }) => {
           (comment) => comment.author === username
         );
         if (filtered.length === 0) {
-          setError("No comments found for this username.");
+          setError("No comments found for this user.");
           setSuccessMsg("");
         }
         setUserComments(filtered);

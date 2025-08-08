@@ -19,18 +19,22 @@ const AllUsers = (children) => {
         setLoading(false);
       });
   }, []);
-  if (loading) return <p className="loading-message">Loading All Users...</p>;
+
   if (error) return <p className="error-message">{error}</p>;
   return (
     <section className="main-section">
-      <>
-        <h3 className="main-page-h3">All Users:</h3>
-        <ul className="topics-list">
-          {users.map((user) => (
-            <UserInlist key={user.username} user={user} />
-          ))}
-        </ul>
-      </>
+      {loading ? (
+        <p className="loading-message">Loading All Users...</p>
+      ) : (
+        <>
+          <h3 className="main-page-h3">All Users:</h3>
+          <ul className="topics-list">
+            {users.map((user) => (
+              <UserInlist key={user.username} user={user} />
+            ))}
+          </ul>
+        </>
+      )}
     </section>
   );
 };

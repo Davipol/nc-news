@@ -91,7 +91,7 @@ const SingleArticle = () => {
     <section className="main-section single-article">
       <h3 className="main-page-h3">{article.title}</h3>
       <p>
-        <strong>Post by:</strong> {article.author} on{" "}
+        <strong>Post by:</strong> {article.author} | <strong>on: </strong>
         {new Date(article.created_at).toLocaleDateString()}
         <span></span>
       </p>
