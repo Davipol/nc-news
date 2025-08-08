@@ -26,7 +26,7 @@ const SortBy = () => {
           onChange={handleChange}
         >
           <option value="created_at">Date</option>
-          <option value="comment_count">Comment count</option>
+          <option value="comment_count">Comments</option>
           <option value="votes">Votes</option>
         </select>
       </label>

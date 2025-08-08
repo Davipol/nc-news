@@ -34,7 +34,7 @@ a:hover {
     "footer footer";
   grid-template-columns: 1fr 4fr;
   grid-template-rows: auto 80px 1fr auto;
-  gap: 5px;
+  gap: 4px;
 }
 header {
   background-color: rgb(222, 215, 241);
@@ -76,7 +76,7 @@ span {
 }
 .nav-section {
   grid-area: nav;
-  border-right: solid 1px;
+  /* border-right: solid 1px; */
   height: auto;
   position: sticky;
   top: 0;
@@ -92,8 +92,8 @@ span {
 .main-section {
   grid-area: content;
   padding: 0;
-  margin-right: 30px;
-  margin-left: 10px;
+  margin-right: 81px;
+  margin-left: 0px;
 }
 .main-page-h3 {
   text-align: center;
@@ -101,8 +101,9 @@ span {
 }
 .articles-list,
 .topics-list {
-  padding-top: 0;
+  padding: 0;
   list-style: none;
+  text-align: center;
 }
 .topic-list-item,
 .user-card {
@@ -114,9 +115,13 @@ span {
   width: 100px;
   height: 100px;
 }
-.article-card,
+
 .user-card {
-  border-bottom: solid;
+  display: block;
+}
+.article-card {
+  display: block;
+  border-bottom: solid 1px;
 }
 .comments-list {
   list-style: none;
@@ -151,8 +156,8 @@ img {
   max-height: none;
   display: flex;
   justify-content: center;
-  margin-right: 30px;
-  margin-left: 30px;
+  margin-right: 80px;
+  display: block;
 }
 .search-button {
   margin-top: 4px;
@@ -170,7 +175,6 @@ img {
   gap: 10px;
   margin-top: 10px;
   font-size: 1rem;
-  margin-left: 30px;
 }
 .select-label select {
   display: block;
@@ -288,13 +292,23 @@ img {
     font-size: 0.8rem;
     margin-left: -20px;
   }
+  .nav-list a:active {
+    color: rgb(99, 46, 168);
+  }
   .nav-section.hide {
-    display: none;
+    transition: transform 0.6s ease-out, visibility 0.6s;
+    visibility: hidden;
+    transform: translateX(-300px);
   }
   .nav-section.show {
     display: block;
-    background-color: rgb(247, 247, 247);
-    padding: 10px;
+    border-right: solid 1px rgb(207, 204, 204);
+    border-bottom: solid 1px rgb(207, 204, 204);
+    border-radius: 0 10px 10px 0;
+    transition: transform 0.6s ease-out, visibility 0.6s;
+    transform: translateX(0px);
+    visibility: visible;
+    background-color: rgb(240, 237, 237);
   }
 
   .main-header {
@@ -303,6 +317,9 @@ img {
   img {
     width: 150px;
     height: 110px;
+
+    display: block;
+    margin: auto;
   }
   .user-image {
     width: 60px;
@@ -311,6 +328,16 @@ img {
   .header-paragraph {
     align-content: center;
     font-size: 0.7rem;
+  }
+  .article-in-list-title {
+    font-size: 0.8rem;
+  }
+  .article-in-list-title-link {
+    text-decoration: none;
+  }
+  .article-in-list-paragraph {
+    font-size: 0.8rem;
+    line-height: 0.6rem;
   }
 }
 @media (min-width: 756px) {
